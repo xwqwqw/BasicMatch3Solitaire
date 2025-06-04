@@ -1,8 +1,9 @@
 using System.Collections.Generic;
 using System.Linq;
-using UnityEditor;
 using UnityEngine;
-
+#if UNITY_EDITOR
+using UnityEditor;
+#endif
 namespace _Main.Scripts.Levels
 {
     [CreateAssetMenu(fileName = "LevelPool", menuName = "Config/LevelPool", order = 1)]
