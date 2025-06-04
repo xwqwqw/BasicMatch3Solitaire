@@ -22,6 +22,8 @@ Use the Strategy Pattern for movement behaviors, which would make it easier for 
 
 I would avoid writing a custom editor in a tight time constraint, as it consumed a significant portion of the development time.
 
+After testing, I discovered and fixed a bug related to the win logic. The CardStack class is likely the first area I would focus on improving for better structure and maintainability.
+
 # AI Assistance
 AI tools were used in the following ways:
 
