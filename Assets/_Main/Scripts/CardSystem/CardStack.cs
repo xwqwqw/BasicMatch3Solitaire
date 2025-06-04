@@ -43,8 +43,7 @@ namespace _Main.Scripts.CardSystem
 
         private void CheckLevelWin()
         {
-            UndoController.Instance.ClearHistory();
-            GameController.Instance.NextLevel();
+            EventController.Trigger(EventNames.OnLevelWin, true);
         }
 
         private void CheckMatch()

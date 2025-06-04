@@ -7,18 +7,27 @@ namespace _Main.Scripts.Controllers
 {
     public class UndoController : BaseSingleton<UndoController>
     {
-
         private readonly Stack<ICommand> _history = new();
+
+        private void Start()
+        {
+            SubToEvents();
+        }
+
+        private void SubToEvents()
+        {
+            EventController.Subscribe<bool>(EventNames.OnLevelWin, OnLevelWin);
+        }
+        
+        private void OnLevelWin(bool obj)
+        {
+            ClearHistory();
+        }
 
         public void ExecuteCommand(ICommand command)
         {
             command.Execute();
             _history.Push(command);
-        }
-    
-        public void ClearHistory()
-        {
-            _history.Clear();
         }
 
         public void Undo()
@@ -39,6 +48,11 @@ namespace _Main.Scripts.Controllers
 
                 return;
             }
+        }
+     
+        private void ClearHistory()
+        {
+            _history.Clear();
         }
 
     }

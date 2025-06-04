@@ -20,7 +20,14 @@ namespace _Main.Scripts.Controllers
         private void Start()
         {
             SpawnLevel();
+            SubscribeToEvents();
         }
+
+        private void SubscribeToEvents()
+        {
+            EventController.Subscribe<bool>(EventNames.OnLevelWin, OnLevelWin);
+        }
+        
         private void SpawnLevel()
         {
             if (CurrentLevel >= levelDataPool.Levels.Count)
@@ -39,11 +46,13 @@ namespace _Main.Scripts.Controllers
         
             Debug.Log($"Level {CurrentLevel} spawned with {levelData.cards.Count} cards.");
         }
-    
-        public void NextLevel()
+
+        private void OnLevelWin(bool value)
         {
             CurrentLevel++;
             SpawnLevel();
         }
+
+     
     }
 }
